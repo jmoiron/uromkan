@@ -105,6 +105,7 @@ def get_kunreitab():
 ー     -
 ちぇ    tye
 っちぇ	ttye
+じぇ    je
 """
 
 def get_hepburntab():
@@ -191,6 +192,7 @@ def get_hepburntab():
 ー     -
 ちぇ    che
 っちぇ	cche
+じぇ    je
 """
 
 def init_rkdict(table):
@@ -296,9 +298,9 @@ def consonant2moras(consonant):
 
     Create list of mora starting with consonant.
 
-    >>> consonant2moras('z')
-    ['zo', 'ze', 'za', 'zu', 'zzyo', 'zi', 'zzu', 'zzo', 'zzi', 'zza', \
-'zze', 'zyo', 'zzya', 'zya', 'zyu', 'zzyu']
+    >>> list(sorted(consonant2moras('z')))
+    ['za', 'ze', 'zi', 'zo', 'zu', 'zya', 'zyo', 'zyu', 'zza', 'zze', \
+'zzi', 'zzo', 'zzu', 'zzya', 'zzyo', 'zzyu']
 
     """
     results = []
@@ -335,7 +337,7 @@ def romrom(word):
 
     Normalizes romaji string into hepburn.
 
-    >>> romrom('kannzi')
+    >>> romrom('kanzi')
     'kanji'
     >>> romrom('hurigana')
     'furigana'
@@ -345,7 +347,7 @@ def romrom(word):
     'chiezo'
 
     """
-    word = normalize_double_n(word)
+    #word = normalize_double_n(word)
     word = hk_re.sub(lambda m: m.groups()[0] + romroms[m.groups()[1]], word)
     return word
 
@@ -363,7 +365,7 @@ def romkan(word):
     Kunrei formats.
 
     """
-    word = normalize_double_n(word)
+    #word = normalize_double_n(word)
     word = cr_re.sub(lambda m: m.groups()[0] + romkans[m.groups()[1]], word)
     return word
 
@@ -375,7 +377,7 @@ def kanrom(word):
     Converts hiragana string into Hepburn romaji string.
 
     """
-    word = normalize_double_n(word)
+    #word = normalize_double_n(word)
     word = ck_re.sub(lambda m: m.groups()[0] + kanroms[m.groups()[1]], word)
     word = n_re.sub("n", word)
     # small katakana letters don't get the 'x' taken out when they are
