@@ -270,12 +270,10 @@ def isconsonant(char):
     """isconsonant(string) -> bool
 
     Returns true if string is a consonant.
-
     """
-    if conre.match(char):
+    if len(char) == 1 and char in "ckgszjtdhfpbmyrwxn":
         return True
-    else:
-        return False
+    return False
 
 # vowel regex
 vowels = "aeiou"
@@ -286,12 +284,10 @@ def isvowel(char):
     """isvowel(string) -> bool
 
     Returns true if string is a vowel.
-
     """
-    if vowre.match(char):
+    if len(char) == 1 and char in 'aeiou':
         return True
-    else:
-        return False
+    return False
 
 def consonant2moras(consonant):
     """consonant2moras(string) -> list
